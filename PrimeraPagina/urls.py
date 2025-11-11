@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from inicio.views import inicio, charge_painting, painting_list
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', inicio),
+    path('charge-painting/<artist>/<style>/<price>/', charge_painting),
+    path('painting-list/', painting_list)
 ]
