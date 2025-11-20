@@ -1,8 +1,30 @@
+{% extends "base.html" %}
+{% block title_head %}PaintingList{% endblock title_head %}
+{% block content %}
 
+<!-- Formulario de búsqueda-->
+<form action="" method="get">
+    <input type="text" name="artist">
+    <input type="submit" value="Search">
+</form>
+
+{% if painting_availables %} 
 <ul>
     {% for painting in painting_availables %}
     <li>
         {{painting}}
+        | <a href={% url "view_painting" painting.id %}>View painting details</a>
+        | <a href={% url "update_painting_info" painting.id %}>Actualizar</a>
+        | <a href={% url "delete_painting" painting.id %}>Delete</a>
+    
     </li>
     {% endfor %}
 </ul>
+{% else %}
+    <p> There are no paintings available. </p>
+{% endif %}
+{% endblock content %}
+
+
+
+

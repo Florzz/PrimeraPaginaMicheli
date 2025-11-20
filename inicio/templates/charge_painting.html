@@ -1,1 +1,28 @@
-Se cargó una nueva pintura: {{saved_painting.artist}}, {{saved_painting.style}}, {{saved_painting.price}}
+{% extends "base.html" %}
+{% block title_head %}ChargePainting{% endblock title_head %}
+{% block content %}
+
+    <form action={% url "charge_painting" %} method='POST'>
+        {% csrf_token %}
+        {{form_painting}}
+        <!--
+        <label for="Artist">
+            Artist: <input type="text" name="Artist">
+        </label>
+
+        <label for="Style">
+            Style: <input type="text" name="Style">
+        </label>
+
+        <label for="Price">
+            Price: <input type="number" name="Price">
+        </label>
+        -->
+        
+        <input type="submit" value="Create">
+    </form>
+
+{% endblock content %}
+
+
+

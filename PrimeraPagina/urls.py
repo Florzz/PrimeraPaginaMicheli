@@ -16,12 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from inicio.views import inicio, charge_painting, painting_list
+from inicio.views import inicio, charge_painting, painting_list, view_painting, UpdatePaintingInfo, DeletePainting
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', inicio),
-    path('charge-painting/<artist>/<style>/<price>/', charge_painting),
-    path('painting-list/', painting_list)
+    path('', inicio, name='init'),
+    #path('charge-painting/<artist>/<style>/<price>/', charge_painting, name='charge_painting'),
+    path('charge-painting/', charge_painting, name='charge_painting'),
+    path('painting-list/', painting_list, name='painting_list'),
+    path('view-painting/<painting_id>/', view_painting, name='view_painting'),
+    path('update_painting_info/<pk>/', UpdatePaintingInfo.as_view(), name='update_painting_info'),
+    path('delete_painting/<pk>/', DeletePainting.as_view(), name='delete_painting')
+
 ]

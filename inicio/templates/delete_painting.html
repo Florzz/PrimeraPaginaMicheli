@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title_head %}Deletepainting{% endblock title_head %}
+{% block content %}
+
+    <form action={% url "delete_painting" painting.id %} method='POST'>
+        {% csrf_token %}
+        Delete the painting {{painting}}
+
+        
+        <input type="submit" value="Delete">
+    </form>
+
+{% endblock content %}
+
+
+

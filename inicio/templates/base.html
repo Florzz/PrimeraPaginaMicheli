@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title_head %}Base{% endblock title_head %}
+    </title>
+
+</head>
+<body>
+    <nav>
+        <a href={% url "init" %} > Init </a>
+        <a href={% url "charge_painting" %}> Charge painting </a>
+        <a href={% url "painting_list" %}> List painting </a>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+</body>
+</html>

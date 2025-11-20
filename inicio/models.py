@@ -3,7 +3,7 @@ from django.db import models
 class Painting(models.Model):
     artist = models.CharField(max_length=20) 
     style = models.CharField(max_length=20) 
-    price = models.IntegerField(max_length=10)
+    price = models.IntegerField()
 
 
     def __str__(self):
