@@ -4,20 +4,22 @@ from inicio.models import Painting
 from inicio.forms import ChargePainting, SearchPainting
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
 
 def inicio(request):
     return render(request, "inicio.html")
 
+@login_required
 def charge_painting(request):
     painting = None
     if request.method == 'POST':
-        form_painting = ChargePainting(request.POST)
+        form_painting = ChargePainting(request.POST, request.FILES)
         if form_painting.is_valid():
             info = form_painting.cleaned_data
 
-            painting = Painting(artist=info.get('artist'), style=info.get('style'), price=info.get('price'))
+            painting = Painting(artist=info.get('artist'), style=info.get('style'), price=info.get('price'), picture=info.get('picture'))
             painting.save()
 
             return redirect('painting_list')
@@ -42,13 +44,17 @@ def view_painting(request, painting_id):
 
 
 # Clase basada en vistas
-class UpdatePaintingInfo(UpdateView):
+class UpdatePaintingInfo(LoginRequiredMixin, UpdateView):
     model = Painting
     template_name = 'update_painting_info.html'
     fields = '__all__' # fields = ['Artist, 'Style]: si solo se quieren modificar algunos de lso campos
     success_url = reverse_lazy('painting_list')
 
-class DeletePainting(DeleteView):
+class DeletePainting(LoginRequiredMixin, DeleteView):
     model = Painting
     template_name = 'delete_painting.html'
     success_url = reverse_lazy('painting_list')
+
+
+def about(request):
+    return render(request, "about.html")

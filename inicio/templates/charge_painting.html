@@ -2,7 +2,7 @@
 {% block title_head %}ChargePainting{% endblock title_head %}
 {% block content %}
 
-    <form action={% url "charge_painting" %} method='POST'>
+    <form action={% url "charge_painting" %} method='POST' enctype='multipart/form-data'>
         {% csrf_token %}
         {{form_painting}}
         <!--

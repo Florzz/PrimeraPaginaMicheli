@@ -13,5 +13,12 @@
     <li>
         Price: {{painting.price}}
     </li>
+    
+    {% if painting.picture %}
+    <li>
+        Picture: <img src={{painting.picture.url}} alt="picture_painting" height="600px">
+    </li>
+    {% endif %}
+
 </ul>
 {% endblock content %}

@@ -2,7 +2,7 @@
 {% block title_head %}UpdatepaintingInfo{% endblock title_head %}
 {% block content %}
 
-    <form action={% url "update_painting_info" painting.id %} method='POST'>
+    <form action={% url "update_painting_info" painting.id %} method='POST' enctype='multipart/form-data'>
         {% csrf_token %}
         {{form}}
 
