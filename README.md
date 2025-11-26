@@ -1,10 +1,7 @@
 # Primera página en Django
 
-Se genera una página web en Django utilizando la clase *Painting* con los atributos *artist*, *style* y *price*.
+Se genera una página web en Django utilizando la clase *Painting* con los atributos *artist*, *style*, *price* e *image*.
+Se implementa la funcionalidad de iniciar sesión, crear un usuario, cargar los datos de una pintura en particular y listar todos los cuadros.
 
-Para cargar un nuevo cuadro:
-- `charge-painting/<artist>/<style>/<price>/`
 
-Para listar los cuadros dentro de la base de datos:
--  `painting-list/', painting_list`
 
